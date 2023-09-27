@@ -1,0 +1,13 @@
+.AboutUs-article {
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin: 10px 0;
+  }
+  
+  .AboutUs-article img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px 0;
+  }
+  
