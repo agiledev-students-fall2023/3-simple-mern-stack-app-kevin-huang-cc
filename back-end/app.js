@@ -87,8 +87,8 @@ app.get('/aboutus', async (req, res) => {
     const aboutUsMessage = await AboutUs.find({}); // Assuming there's only one entry for about us content
     res.json({
       message: "Hello! This is Kevin, a newbie in web developing",
-      imageUrl: "https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fimage&psig=AOvVaw1ZeXeePNAQLI42DptLboLA&ust=1695934644609000&source=images&cd=vfe&opi=89978449&ved=0CA0QjRxqFwoTCID0hILXy4EDFQAAAAAdAAAAABAE"
-      })
+      imageUrl: "http://localhost:5002/static/Kevin.png"
+    })
 
   } catch (err) {
     console.error(err)
@@ -99,28 +99,6 @@ app.get('/aboutus', async (req, res) => {
   }
 })
 
-
-app.post('/aboutus', async (req, res) => {
-  /*
-  try {
-    const content = await AboutUs.create({
-      text: req.body.text,
-      imageUrl: req.body.imageUrl,
-    })
-    res.json(content)
-  } catch (err) {
-    console.error(err)
-    res.status(400).json({
-      error: err,
-      status: 'failed to save about us content to the database',
-    })
-  }
-  */
- res.json({
-  message: "Hello! This is Kevin, a newbie in web developing",
-  imageUrl: "https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fimage&psig=AOvVaw1ZeXeePNAQLI42DptLboLA&ust=1695934644609000&source=images&cd=vfe&opi=89978449&ved=0CA0QjRxqFwoTCID0hILXy4EDFQAAAAAdAAAAABAE"
- })
-})
 
 // export the express app we created to make it available to other modules
 module.exports = app // CommonJS export style!
