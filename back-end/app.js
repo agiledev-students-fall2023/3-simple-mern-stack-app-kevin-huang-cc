@@ -4,6 +4,7 @@ const morgan = require('morgan') // middleware for nice logging of incoming HTTP
 const cors = require('cors') // middleware for enabling CORS (Cross-Origin Resource Sharing) requests.
 const mongoose = require('mongoose')
 
+
 const app = express() // instantiate an Express object
 app.use(morgan('dev', { skip: (req, res) => process.env.NODE_ENV === 'test' })) // log all incoming requests, except when in unit test mode.  morgan has a few logging default styles - dev is a nice concise color-coded style
 app.use(cors()) // allow cross-origin resource sharing
@@ -12,6 +13,7 @@ app.use(cors()) // allow cross-origin resource sharing
 app.use(express.json()) // decode JSON-formatted incoming POST data
 app.use(express.urlencoded({ extended: true })) // decode url-encoded incoming POST data
 
+app.use('/static', express.static('public'))
 // connect to database
 mongoose
   .connect(`${process.env.DB_CONNECTION_STRING}`)
@@ -84,9 +86,10 @@ app.get('/aboutus', async (req, res) => {
   try {
     const aboutUsMessage = await AboutUs.find({}); // Assuming there's only one entry for about us content
     res.json({
-      message: aboutUsMessage,
-      status: 'all good',
-    })
+      message: "Hello! This is Kevin, a newbie in web developing",
+      imageUrl: "https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fimage&psig=AOvVaw1ZeXeePNAQLI42DptLboLA&ust=1695934644609000&source=images&cd=vfe&opi=89978449&ved=0CA0QjRxqFwoTCID0hILXy4EDFQAAAAAdAAAAABAE"
+      })
+
   } catch (err) {
     console.error(err)
     res.status(400).json({
@@ -98,6 +101,7 @@ app.get('/aboutus', async (req, res) => {
 
 
 app.post('/aboutus', async (req, res) => {
+  /*
   try {
     const content = await AboutUs.create({
       text: req.body.text,
@@ -111,6 +115,11 @@ app.post('/aboutus', async (req, res) => {
       status: 'failed to save about us content to the database',
     })
   }
+  */
+ res.json({
+  message: "Hello! This is Kevin, a newbie in web developing",
+  imageUrl: "https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fimage&psig=AOvVaw1ZeXeePNAQLI42DptLboLA&ust=1695934644609000&source=images&cd=vfe&opi=89978449&ved=0CA0QjRxqFwoTCID0hILXy4EDFQAAAAAdAAAAABAE"
+ })
 })
 
 // export the express app we created to make it available to other modules
